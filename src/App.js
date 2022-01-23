@@ -1,8 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { ethers } from "ethers";
 import './App.css';
-import { Input, Text, Center, Stack } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 const SHA256 = require('crypto-js/sha256');
 const secp = require("@noble/secp256k1");
 var Buffer = require('buffer/').Buffer; // note: the trailing slash is important!
@@ -22,7 +21,6 @@ export default function App() {
   const [amount, setAmount] = React.useState("");
   const [recipient, setRecipient] = React.useState("");
   const [signature, setSignature] = React.useState("");
-  const [recoveryBit, setRecoveryBit] = React.useState("");
   const [balances, setBalances] = React.useState([]);
 
   React.useEffect(() => {
@@ -51,10 +49,6 @@ export default function App() {
     let public3 = Buffer.from(secp.getPublicKey(privateKey3)).toString('hex');
     public3 = "0x" + public3.slice(public3.length - 40);
     setPublicKey3(public3)
-    let publicKey2 = secp.getPublicKey(privateKey2);
-    let publicKey3 = secp.getPublicKey(privateKey3);
-    publicKey2 = "0x" + publicKey2.slice(publicKey2.length - 40);
-    publicKey3 = "0x" + publicKey3.slice(publicKey3.length - 40);
 
     const balances = {
       [public1]: 130,
