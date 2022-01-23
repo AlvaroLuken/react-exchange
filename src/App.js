@@ -28,6 +28,7 @@ export default function App() {
   }, []);
 
   const setUpPublicPrivateKeys = () => {
+    console.log("hi!");
     let privateKey1 = secp.utils.randomPrivateKey();
     let privateKey2 = secp.utils.randomPrivateKey();
     let privateKey3 = secp.utils.randomPrivateKey();
